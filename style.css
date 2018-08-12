@@ -1,0 +1,446 @@
+/*
+  Oh Hello!
+
+  These are some base styles so that our tutorial looks good.
+
+  Let's go through the important bits real quick
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700i,900');
+:root {
+  --yellow: #ffc600;
+  --black: #272727;
+}
+
+html {
+  /* border-box box model allows us to add padding and border to our elements without increasing their size */
+  box-sizing: border-box;
+  /* A system font stack so things load nice and quick! */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-weight: 900;
+  font-size: 8px;
+  color: var(--black);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+}
+
+/*
+  WAT IS THIS?!
+  We inherit box-sizing: border-box; from our <html> selector
+  Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-size: 340px, auto;
+  min-height: calc(100vh - 100px);
+  margin: 50px;
+  /* background: white; */
+  background-attachment: fixed;
+  letter-spacing: -1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+/* Each item in our grid will contain numbers */
+.container {
+  height: 200vw;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: auto repeat(19, 1fr);
+}
+.item {
+  /* We center the contents of these items. You can also do this with flexbox too! */
+  display: grid;
+  background-color: antiquewhite;
+  /* justify-content: center;
+  align-items: center; */
+  outline: 1px solid rgba(0, 0, 0, 0.03);
+  font-size: 35px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+.title-tag {
+  grid-column: 1/-1;
+  justify-self: center;
+  align-self: end;
+}
+.tag {
+  width: 50px;
+  margin: 0 auto;
+  text-align: center;
+  background: black;
+  color: white;
+  justify-self: center;
+}
+
+.title {
+  line-height: 100%;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+}
+.section-title {
+  line-height: 100%;
+  font-size: 3rem;
+  text-transform: uppercase;
+  z-index: 10;
+  /* position: absolute; */
+}
+.section-sub {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+}
+.section-number {
+  font-size: 3rem;
+}
+.dec-square {
+  border: 1.25rem solid #50e3c2;
+  z-index: -1;
+  grid-row: span 2;
+  grid-column: span 2;
+}
+.dec-square-solid {
+  background: #50e3c2;
+  z-index: -1;
+}
+.dec-stripes {
+  background: repeating-linear-gradient(
+    135deg,
+    #50e3c2,
+    #50e3c2 6.5px,
+    transparent 7px,
+    transparent 15px,
+    #50e3c2 13.5px,
+    #50e3c2 19.25px
+  );
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.item1 {
+  background-image: url(https://images.unsplash.com/photo-1513827379601-9dba5099a3f9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1acdd78f34ee75aade9e313251bb1695&auto=format&fit=crop&w=934&q=80);
+  grid-column: 1 / 5;
+  grid-row: 3 / 7;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-position: 100%;
+}
+.item1 .dec-square {
+  grid-row: 1/ 3;
+  grid-column: 3 / 5;
+  transform: translate(30%, -30%);
+}
+.item1 .dec-stripes {
+  grid-column: 1 / span 2;
+  grid-row: 4 / 5;
+  transform: translateY(50%);
+}
+.item1 .section-title {
+  grid-column: 1/-1;
+  grid-row: 1 / 2;
+}
+.item1 .section-number {
+  grid-row: 4/5;
+  align-self: end;
+  transform: translateY(100%);
+}
+.item1 .section-sub {
+  /* writing-mode: vertical-lr; */
+  grid-column: 4/5;
+  grid-row: 4/5;
+  justify-self: start;
+  /* align-self: end; */
+  transform: rotate(90deg) translateY(-50%);
+}
+
+.item2 {
+  background: url(https://images.unsplash.com/photo-1514632542677-48fae74a01b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cf412aceb1d689765e387d30fca7210a&auto=format&fit=crop&w=934&q=80);
+  background-size: 100% auto;
+  background-position: center;
+  grid-column: 6/8;
+  grid-row: 4/6;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.item2 .dec-square {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  transform: translate(50%, -50%);
+  /*delete later*/
+  z-index: -1;
+}
+.item2 .dec-square-solid {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  transform: translate(25%, -25%);
+
+  /*delete later*/
+  z-index: -1;
+}
+
+.item2 .section-title {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  align-self: end;
+  /* need-fix */
+  transform: translate(50%, 100%);
+}
+.item2 .section-number {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  text-align: right;
+  transform: translate(100%, -100%);
+  justify-content: end;
+}
+.item2 .section-sub {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  align-self: start;
+  transform: translate(-10%, -100%);
+}
+.item3 {
+  background-image: url(https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0f994eef47e5fb1a67849703cc961b3&auto=format&fit=crop&w=2100&q=80);
+  grid-column: 1/5;
+  grid-row: 9/11;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.item3 .dec-square {
+  grid-column: 3/5;
+  grid-row: 1/3;
+  transform: translate(25%, 25%);
+}
+.item3 .dec-square-solid {
+  grid-column:  1/3;
+  grid-row: 1/2;
+  transform: translateY(-50%);
+}
+.item3 .section-title {
+  grid-column:  1/5;
+  grid-row: 1/2;
+  transform: translateY(-50%);
+  justify-self: end;
+}
+.item3 .section-number {
+  grid-column: 4/5;
+  grid-row: 2/3;
+  justify-self: end;
+  align-self: end;
+  transform: translate(100%, 100%);
+}
+.item3 .section-sub {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  align-self: end;
+  justify-self: end;
+  transform: translateY(100%);
+}
+
+.item4 {
+  background-image: url(https://images.unsplash.com/photo-1484516758160-69878111a911?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=39466d66952b133d5a5cff642b970d05&auto=format&fit=crop&w=987&q=80);
+  grid-column: 7/9;
+  grid-row: 9/13;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.item4 .dec-square {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  transform: translate(-30%, -60%);
+}
+.item4 .dec-stripes {
+  grid-column: 1/3;
+  grid-row: 4/5;
+  transform: translateY(50%);
+}
+.item4 .section-title {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  justify-self: start;
+  align-self: end;
+  transform: rotate(270deg) translateY(-200%);
+}
+.item4 .section-number {
+  grid-column: 1/2;
+  grid-row: 4/5;
+  transform: translate(-50%, 50%);
+  /* need-fix */
+  /* transform: rotate(270deg) translate(-30%, -200%); */
+}
+.item4 .section-sub {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  justify-self: end;
+  align-self: start;
+  /* need-fix */
+  transform: rotate(90deg) translateX(-100%);
+}
+
+.item5 {
+  background-image: url(https://images.unsplash.com/photo-1525448198276-222de3961638?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=43fb25556cdbd191e520c7f28739e40d&auto=format&fit=crop&w=1950&q=80);
+  grid-column: 3/5;
+  grid-row: 13/15;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.item5 .dec-stripes {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  transform: translate(-75%, -50%);
+}
+.item5 .dec-square,
+.item5 .section-number {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  transform: translate(-50%, 50%);
+}
+.item5 .section-title {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  /* need-fix */
+  align-self: end;
+  transform: translate(-75%, -50%);
+}
+
+.item5 .section-sub {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  transform: translateX(100%);
+}
+
+.item6 {
+  background-image: url(https://images.unsplash.com/photo-1519406709381-c1f293304b28?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=98c497a29f229085d9574ee8b6eeef8c&auto=format&fit=crop&w=934&q=80);
+  grid-column: 5/9;
+  grid-row: 15/19;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.item6 .dec-square {
+  grid-column: 1/-1;
+  grid-row: 4/5;
+  transform: translateY(50%);
+}
+.item6 .dec-square-solid {
+  grid-column: 1/2;
+  grid-row: 3/5;
+  transform: translateX(-50%);
+}
+.item6 .section-title {
+  grid-column: 1/-1;
+  justify-self: end;
+  align-self: start;
+  transform: translateY(-100%);
+}
+.item6 .section-sub {
+  grid-column: 1/-1;
+  grid-row: 4/5;
+  align-self: end;
+  justify-self: center;
+  transform: translateY(100%);
+}
+.item6 .section-number {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  /* need fix */
+  align-self: end;
+  justify-self: start;
+  transform: translate(-100%);
+}
+.item7 {
+  background-image: url(https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=63ff45d79414b3166b08b800a32018be&auto=format&fit=crop&w=934&q=80);
+  grid-column: 1/3;
+  grid-row: 17/21;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.item7 .dec-square {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  transform: translate(20%, -10%);
+}
+.item7 .dec-square-solid {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  transform: translateX(100%);
+}
+.item7 .section-number {
+  grid-column: 2/3;
+  grid-row: 4/5;
+  /* need fix */
+  align-self: end;
+  transform: translateX(150%);
+}
+.item7 .section-title {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  writing-mode: vertical-lr;
+  align-self: start;
+  justify-self: end;
+  transform: translateX(100%);
+}
+
+.item7 .section-sub {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  transform: translateY(-100%);
+  align-self: start;
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 100%;
+    height: 500vw;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows:  auto repeat(39, 1fr);
+  }
+  .item {
+    grid-column: unset;
+    grid-row: span 4;
+  }
+  .item1{
+    grid-column: 1 / 5;
+    grid-row: 3 /span 4;
+  }
+  .item2{
+    grid-column: 2/4;
+    grid-row: 10/span 2;
+  }
+  .item3{
+    grid-column: 1/5;
+    grid-row: 15/span 2;
+  }
+  .item4{
+    grid-column: 2/4;
+    grid-row: 20/span 4;
+  }
+  .item5{
+    grid-column: 2/4;
+    grid-row: 26/span 2;
+  }
+  .item6{
+    grid-column: 1/5;
+    grid-row: 30/span 4;
+  }
+  .item7{
+    grid-column: 2/4;
+    grid-row: 36/span 4;
+  }
+}
